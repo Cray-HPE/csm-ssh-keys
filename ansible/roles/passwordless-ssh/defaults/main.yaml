@@ -1,0 +1,5 @@
+# Copyright 2020 Hewlett Packard Enterprise Development LP
+---
+csm_public_key_configmap: 'csm-public-key'
+csm_private_key_secret: 'csm-private-key'
+csm_key_namespace: 'services'
