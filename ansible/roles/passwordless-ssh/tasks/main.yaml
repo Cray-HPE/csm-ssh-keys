@@ -1,0 +1,39 @@
+# Copyright 2020 Hewlett Packard Enterprise Development LP
+
+# Read in the private key from k8s
+- name: Read in CSM Private key for passwordless SSH
+  csm_read_secret:
+    name: "{{ csm_private_key_secret }}"
+    namespace: "{{ csm_key_namespace }}"
+  register: csm_private_key
+  no_log: true
+  run_once: true
+  delegate_to: localhost
+
+# Write the private key to disk
+- name: Write private keyfile to disk with appropriate permissions
+  lineinfile:
+    create: true
+    line: "{{ csm_private_key['response'] }}"
+    state: present
+    path: /root/.ssh/csm-ecdsa
+    mode: '600'
+  no_log: true
+
+# Obtain the public half of the key as well
+- name: Obtain the public half of the keypair from k8s configmap
+  csm_read_configmap:
+    name: "{{ csm_public_key_configmap }}"
+    namespace: "{{ csm_key_namespace }}"
+  register: csm_public_key
+  run_once: true
+  delegate_to: localhost
+
+# Write the public half of the keypair as well
+- name: Create the CSM public key file on target hosts
+  lineinfile:
+    create: true
+    line: "{{ csm_public_key['response'] }}"
+    path: /root/.ssh/csm-ecdsa.pub
+    state: present
+    mode: '644'

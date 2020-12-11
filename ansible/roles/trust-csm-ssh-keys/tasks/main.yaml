@@ -1,0 +1,20 @@
+# Copyright 2020 Hewlett Packard Enterprise Development LP
+
+# Pseudo-steps:
+# All executing hosts obtain a copy of the local k8s configmap, exposed
+# from the AEE pod
+- name: Obtain copy of CSM Public Keyhalf from k8s
+  csm_read_configmap:
+    name: 'csm-public-key'
+    namespace: "{{ csm_key_namespace }}"
+  register: csm_public_key
+  run_once: True
+  delegate_to: localhost
+
+# All executing hosts insert the public key into /root/.ssh/authorized_keys
+- name: Inject CSM public Key into SSH authorized_keys file
+  lineinfile:
+    create: true
+    line: "{{ csm_public_key['response'] }}"
+    state: present
+    path: /root/.ssh/authorized_keys
