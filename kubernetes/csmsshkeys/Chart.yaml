@@ -2,4 +2,4 @@ apiVersion: v1
 description: "CSM Passwordless SSH Keypair Initialization"
 name: "csm-ssh-keys"
 home: "scms/csm-ssh-keys"
-version: 1.0.4
+version: 1.0.5

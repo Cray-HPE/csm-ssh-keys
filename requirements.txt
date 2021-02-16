@@ -1,5 +1,5 @@
---index-url https://arti.dev.cray.com/artifactory/internal-pip-master-local
---extra-index-url=https://pypi.org/simple
+--index-url https://arti.dev.cray.com:443/artifactory/api/pypi/pypi-remote/simple
+--extra-index-url https://arti.dev.cray.com/artifactory/internal-pip-master-local
 --trusted-host arti.dev.cray.com
 -c constraints.txt
 requests
