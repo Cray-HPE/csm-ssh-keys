@@ -1,7 +1,7 @@
 # Dockerfile for csm-ssh-keys
-# Copyright 2019-2020 Hewlett Packard Enterprise Development LP
+# Copyright 2019-2021 Hewlett Packard Enterprise Development LP
 
-FROM dtr.dev.cray.com/baseos/alpine:3.12.0 as service
+FROM arti.dev.cray.com/baseos-docker-master-local/alpine:3.12.4 as service
 WORKDIR /app
 RUN mkdir /app/src
 COPY /src/ /app/src
