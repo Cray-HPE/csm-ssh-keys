@@ -1,6 +1,6 @@
-# Copyright 2020 Hewlett Packard Enterprise Development LP
+# Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 Name: csm-ssh-keys
-License: Cray Software License Agreement
+License: MIT
 Summary: Ansible modules and roles for use with CSM SSH Key Distribution
 Group: System/Management
 Version: %(cat .version)
