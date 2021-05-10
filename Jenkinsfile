@@ -11,6 +11,7 @@ dockerBuildPipeline {
     enableSonar = true
     autoJira = false
     sendEvents = ["csm-ssh-keys"]
+    buildPrepScript = "update_versions.sh"
     
     githubPushRepo = "Cray-HPE/csm-ssh-keys"
     /*
