@@ -7,5 +7,4 @@ rpmBuild (
     fanout_params: ["sle15sp1", "sle15sp2"],
     slack_notify: ["", "", "false", "false", "true", "true"],
     specfile: "csm-ssh-keys.spec",
-    buildPrepScript: "update_versions.sh",
 )
