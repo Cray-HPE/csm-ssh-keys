@@ -4,7 +4,7 @@ rpmBuild (
     channel: "casmcms-build",
     product: "csm",
     target_node: "ncn",
-    fanout_params: ["sle15sp1", "sle15sp2"],
+    fanout_params: ["sle15sp1", "sle15sp2", "sle15sp3"],
     slack_notify: ["", "", "false", "false", "true", "true"],
     specfile: "csm-ssh-keys.spec",
 )
