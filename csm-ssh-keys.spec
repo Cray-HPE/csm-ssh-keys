@@ -25,6 +25,7 @@ Summary: Ansible modules and roles for use with CSM SSH Key Distribution
 Group: System/Management
 Version: %(cat .version)
 Release: %(echo ${BUILD_METADATA})
+BuildArch: noarch
 Source: %{name}-%{version}.tar.bz2
 Vendor: Hewlett Packard Enterprise Development LP
 
