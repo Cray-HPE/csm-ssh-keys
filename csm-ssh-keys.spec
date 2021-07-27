@@ -65,9 +65,6 @@ cp -r ansible/roles/* %{buildroot}%{ansible_roles_dir}/.
 install -m 755 -d   %{buildroot}%{ansible_requires_dir}/.
 cp module_requirements.txt %{buildroot}%{ansible_requires_dir}/csm_ssh_keys.txt
 
-%clean
-rm -f  %{buildroot}%{modules}/*
-
 %files
 %defattr(755, root, root)
 %dir %{ansible_modules_dir}
