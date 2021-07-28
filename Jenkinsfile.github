@@ -13,8 +13,8 @@ pipeline {
     environment {
         NAME = "csm-ssh-keys"
         DESCRIPTION = "Cray Management System - CFS Roles for management of Keys"
-        SPEC_FILE = "cms-meta-tools.spec"
-        IS_STABLE = getBuildIsStable(releaseBranchIsStable: true)
+        SPEC_FILE = "csm-ssh-keys.spec"
+        IS_STABLE = getBuildIsStable()
         BUILD_METADATA = getRpmRevision(isStable: env.IS_STABLE)
     }
 
