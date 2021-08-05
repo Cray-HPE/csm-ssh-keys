@@ -25,6 +25,7 @@ Summary: Ansible modules and roles for use with CSM SSH Key Distribution
 Group: System/Management
 Version: %(cat .version)
 Release: %(echo ${BUILD_METADATA})
+BuildArch: noarch
 Source: %{name}-%{version}.tar.bz2
 Vendor: Hewlett Packard Enterprise Development LP
 
@@ -64,9 +65,6 @@ cp -r ansible/roles/* %{buildroot}%{ansible_roles_dir}/.
 # Requirements
 install -m 755 -d   %{buildroot}%{ansible_requires_dir}/.
 cp module_requirements.txt %{buildroot}%{ansible_requires_dir}/csm_ssh_keys.txt
-
-%clean
-rm -f  %{buildroot}%{modules}/*
 
 %files
 %defattr(755, root, root)
