@@ -27,6 +27,7 @@
   csm_read_configmap:
     name: 'csm-public-key'
     namespace: "{{ csm_key_namespace }}"
+    key: 'value'
   register: csm_public_key
   run_once: True
   delegate_to: localhost
