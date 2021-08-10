@@ -38,7 +38,7 @@ setuptools.setup(
     description="CSM SSH Key Initialization Deployment",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://stash.us.cray.com/projects/SCMS/repos/csm-ssh-keys/browse",
+    url="https://github.com/Cray-HPE/csm-ssh-keys",
     package_dir = package_dir,
     packages = list(package_dir.keys()),
     keywords="vault ssh kubernetes csm",

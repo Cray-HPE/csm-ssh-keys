@@ -35,11 +35,16 @@ asynchronously during install.
 Any images or deployed environments will need to be reconfigured if the keypair is manually changed.
 There is no automatic process that initiates this reconfiguration.
 
-## Versioning
-Use [SemVer](http://semver.org/). The version is located in the [.version](.version) file. Other files either
-read the version string from this file or have this version string written to them at build time 
-based on the information in the [update_versions.conf](update_versions.conf) file (using the 
-update_versions.sh script in the cms-meta-tools repo).
+## Build Helpers
+This repo uses some build helper scripts from the 
+[cms-meta-tools](https://github.com/Cray-HPE/cms-meta-tools) repo. See that repo for more details.
+
+## Local Builds
+If you wish to perform a local build, you will first need to clone or copy the contents of the
+cms-meta-tools repo to `./cms_meta_tools` in the same directory as the `Makefile`.
+
+### Versioning
+Use [SemVer](http://semver.org/). The version is located in the [.version](.version) file.
 
 ## Copyright and License
 This project is copyrighted by Hewlett Packard Enterprise Development LP and is under the MIT
