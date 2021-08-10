@@ -21,7 +21,7 @@
 #
 # (MIT License)
 
-FROM arti.dev.cray.com/baseos-docker-master-local/alpine:3.13.5 as service
+FROM artifactory.algol60.net/docker.io/alpine:3.13.5 as service
 WORKDIR /app
 RUN mkdir /app/src
 COPY /src/ /app/src

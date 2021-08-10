@@ -25,6 +25,7 @@
   csm_read_secret:
     name: "{{ csm_private_key_secret }}"
     namespace: "{{ csm_key_namespace }}"
+    key: "value"
   register: csm_private_key
   no_log: true
   run_once: true
@@ -45,6 +46,7 @@
   csm_read_configmap:
     name: "{{ csm_public_key_configmap }}"
     namespace: "{{ csm_key_namespace }}"
+    key: "value"
   register: csm_public_key
   run_once: true
   delegate_to: localhost

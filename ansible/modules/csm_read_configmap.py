@@ -67,13 +67,14 @@ options:
         type: String
         description: The namespace that contains the config_map in question
     key:
-        required: True
+        required: False
         type: String
-        description: The key that contains the information requested
+        description: The key that contains the information requested, if omitted return the entire config map contents
     decrypt:
+        required: False
         type: Boolean
         default: True
-        description: Perform base64 decrypt on the value returned from the response.
+        description: Perform base64 decrypt on the value returned from the response. Only valid if 'key' specified.
 '''
 
 EXAMPLES = '''
@@ -145,11 +146,11 @@ class ReadConfigMapModule(AnsibleModule):
         try:
             response = self.client.read_namespaced_config_map(name=self.name, 
                                                               namespace=self.namespace)
-            return_value = response.data['value']
+            return_value = response.data  # retrieve entire config map
             if self.key:
-                return_value = return_value[self.key]
-            if self.decrypt:
-                return_value = base64.b64decode(return_value).decode('utf-8')
+                return_value = return_value[self.key]  # get just a key
+                if self.decrypt:
+                    return_value = base64.b64decode(return_value).decode('utf-8')
             result['response'] = return_value
         except ApiException as ae:
             self.fail_json(msg=str(ae))
