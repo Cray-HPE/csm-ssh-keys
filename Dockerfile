@@ -32,6 +32,5 @@ RUN pip3 install --upgrade pip && \
     pip3 install --no-cache-dir -r requirements.txt && \
     pip3 install --no-cache-dir . && \
     rm -rf /app/*
-RUN adduser -g "CSM SSH Keys User" --uid 30999 --disabled-password appuser
-USER appuser
+USER nobody
 ENTRYPOINT [ "python3", "-m", "csmsshkeys" ]
