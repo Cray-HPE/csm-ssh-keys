@@ -20,17 +20,17 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #
 # (MIT License)
-
 FROM artifactory.algol60.net/docker.io/alpine:3.13.5 as service
 WORKDIR /app
+RUN apk add --no-cache linux-headers gcc g++ python3-dev py3-pip musl-dev libffi-dev openssl-dev git jq curl openssh-client
+ADD constraints.txt requirements.txt /app/
 RUN mkdir /app/src
 COPY /src/ /app/src
 COPY /src/csmsshkeys /app/src/csmsshkeys
 COPY setup.py README.md .version /app/
-ADD constraints.txt requirements.txt /app/
-RUN apk add --no-cache linux-headers gcc g++ python3-dev py3-pip musl-dev libffi-dev openssl-dev git jq curl openssh-client
-RUN pip3 install --upgrade pip
-RUN pip3 install --no-cache-dir -r requirements.txt && \
+RUN pip3 install --upgrade pip && \
+    pip3 install --no-cache-dir -r requirements.txt && \
     pip3 install --no-cache-dir . && \
     rm -rf /app/*
+USER nobody
 ENTRYPOINT [ "python3", "-m", "csmsshkeys" ]
