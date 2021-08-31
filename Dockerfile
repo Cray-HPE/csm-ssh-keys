@@ -21,14 +21,17 @@
 #
 # (MIT License)
 
-FROM artifactory.algol60.net/docker.io/alpine:3.12.4 as service
+FROM artifactory.algol60.net/docker.io/alpine:3.12 as service
 WORKDIR /app
 RUN mkdir /app/src
 COPY /src/ /app/src
 COPY /src/csmsshkeys /app/src/csmsshkeys
-COPY setup.py README.md .version /app/
+COPY setup.py README.md .version gitInfo.txt /app/
 ADD constraints.txt requirements.txt /app/
-RUN apk add --no-cache linux-headers gcc g++ python3-dev py3-pip musl-dev libffi-dev openssl-dev git jq curl openssh-client
+RUN apk add --upgrade --no-cache apk-tools &&  \
+	apk update && \
+	apk add --no-cache linux-headers gcc g++ python3-dev py3-pip musl-dev libffi-dev openssl-dev git jq curl openssh-client && \
+	apk -U upgrade --no-cache
 RUN pip3 install --upgrade pip
 RUN pip3 install --no-cache-dir -r requirements.txt && \
     pip3 install --no-cache-dir . && \
