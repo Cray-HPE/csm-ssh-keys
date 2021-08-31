@@ -20,7 +20,7 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #
 # (MIT License)
-FROM artifactory.algol60.net/docker.io/alpine:3.13.5 as service
+FROM artifactory.algol60.net/docker.io/alpine:latest as service
 WORKDIR /app
 RUN apk add --no-cache linux-headers gcc g++ python3-dev py3-pip musl-dev libffi-dev openssl-dev git jq curl openssh-client
 ADD constraints.txt requirements.txt /app/
