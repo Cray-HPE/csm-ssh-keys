@@ -25,6 +25,9 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+with open("gitInfo.txt", "r") as fh:
+    long_description += '\n' + fh.read()
+
 with open(".version", "r") as fh:
     version_str = fh.read()
 
@@ -44,7 +47,7 @@ setuptools.setup(
     keywords="vault ssh kubernetes csm",
     classifiers=(
         "Programming Language :: Python :: 3.8",
-        "License :: Other/Proprietary License",
+        "License :: OSI Approved :: MIT License",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: System :: Systems Administration",
     ),
