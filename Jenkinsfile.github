@@ -17,6 +17,8 @@ pipeline {
         SPEC_FILE = "csm-ssh-keys.spec"
         IS_STABLE = getBuildIsStable()
         BUILD_METADATA = getRpmRevision(isStable: env.IS_STABLE)
+        PUBLISH_SP2 = "sle-15sp2"
+        PUBLISH_SP3 = "sle-15sp3"
     }
 
     stages {
@@ -59,6 +61,48 @@ pipeline {
             }
         }
 
+        stage("Build SP2 rpms") {
+            agent {
+                docker {
+                    image "arti.dev.cray.com/dstbuildenv-docker-master-local/cray-sle15sp2_build_environment:latest"
+                    reuseNode true
+                    // Support docker in docker for clamav scan
+                    args "-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker --group-add 999"
+                }
+            }
+            steps {
+                sh "make rpm"
+            }
+        }
+
+        stage("Publish SP2 rpms") {
+            steps {
+                publishCsmRpms(component: env.NAME, pattern: "dist/rpmbuild/RPMS/noarch/*.rpm", os: env.PUBLISH_SP2, arch: "noarch", isStable: env.IS_STABLE)
+                publishCsmRpms(component: env.NAME, pattern: "dist/rpmbuild/SRPMS/*.rpm", os: env.PUBLISH_SP2, arch: "src", isStable: env.IS_STABLE)
+            }
+        }
+
+        stage("Build SP3 rpms") {
+            agent {
+                docker {
+                    image "arti.dev.cray.com/dstbuildenv-docker-master-local/cray-sle15sp3_build_environment:latest"
+                    reuseNode true
+                    // Support docker in docker for clamav scan
+                    args "-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker --group-add 999"
+                }
+            }
+            steps {
+                sh "make rpm"
+            }
+        }
+
+        stage("Publish SP3 rpms") {
+            steps {
+                publishCsmRpms(component: env.NAME, pattern: "dist/rpmbuild/RPMS/noarch/*.rpm", os: env.PUBLISH_SP3, arch: "noarch", isStable: env.IS_STABLE)
+                publishCsmRpms(component: env.NAME, pattern: "dist/rpmbuild/SRPMS/*.rpm", os: env.PUBLISH_SP3, arch: "src", isStable: env.IS_STABLE)
+            }
+        }
+
         stage("Build") {
             parallel {
                 stage('Image') {
@@ -83,12 +127,6 @@ pipeline {
                         sh "make chart"
                     }
                 }
-
-                stage('Rpm') {
-                    steps {
-                        sh "make rpm"
-                    }
-                }
             }
         }
 
@@ -100,8 +138,6 @@ pipeline {
             steps {
                 publishCsmDockerImage(image: env.NAME, tag: env.DOCKER_VERSION, isStable: env.IS_STABLE)
                 publishCsmHelmCharts(component: env.NAME, chartsPath: "${WORKSPACE}/kubernetes/.packaged", isStable: env.IS_STABLE)
-                publishCsmRpms(component: env.NAME, pattern: "dist/rpmbuild/RPMS/noarch/*.rpm", arch: "noarch", isStable: env.IS_STABLE)
-                publishCsmRpms(component: env.NAME, pattern: "dist/rpmbuild/SRPMS/*.rpm", arch: "src", isStable: env.IS_STABLE)
             }
         }
     }
