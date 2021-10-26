@@ -40,6 +40,7 @@
     path: /root/.ssh/csm-ecdsa
     mode: '600'
   no_log: true
+  when: csm_passwordless_ssh_enabled
 
 # Obtain the public half of the key as well
 - name: Obtain the public half of the keypair from k8s configmap
@@ -50,6 +51,7 @@
   register: csm_public_key
   run_once: true
   delegate_to: localhost
+  when: csm_passwordless_ssh_enabled
 
 # Write the public half of the keypair as well
 - name: Create the CSM public key file on target hosts
@@ -59,3 +61,4 @@
     path: /root/.ssh/csm-ecdsa.pub
     state: present
     mode: '644'
+  when: csm_passwordless_ssh_enabled

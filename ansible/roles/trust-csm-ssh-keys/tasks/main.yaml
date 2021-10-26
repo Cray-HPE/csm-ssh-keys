@@ -39,3 +39,4 @@
     line: "{{ csm_public_key['response'] }}"
     state: present
     path: /root/.ssh/authorized_keys
+  when: csm_passwordless_ssh_enabled

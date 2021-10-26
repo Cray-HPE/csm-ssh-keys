@@ -20,6 +20,7 @@
 #
 # (MIT License)
 ---
+csm_passwordless_ssh_enabled: true
 csm_public_key_configmap: 'csm-public-key'
 csm_private_key_secret: 'csm-private-key'
 csm_key_namespace: 'services'
