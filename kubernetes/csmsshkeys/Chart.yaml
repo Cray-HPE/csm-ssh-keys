@@ -6,11 +6,11 @@ annotations:
 apiVersion: v2
 appVersion: 0.0.0
 dependencies:
-- name: cray-service
-  version: ^7.0.0
-  repository: https://artifactory.algol60.net/artifactory/csm-helm-charts/
-description: "CSM Passwordless SSH Keypair Initialization"
-home: "scms/csm-ssh-keys"
+  - name: cray-service
+    version: ^7.0.0
+    repository: 'https://artifactory.algol60.net/artifactory/csm-helm-charts/'
+description: CSM Passwordless SSH Keypair Initialization
+home: scms/csm-ssh-keys
 keywords:
   - csm
   - cfs
@@ -23,7 +23,7 @@ maintainers:
     email: joel.landsteiner@hpe.com
   - name: rbak-hpe
     email: ryan.bak@hpe.com
-name: "csm-ssh-keys"
+name: csm-ssh-keys
 sources:
-  - "https://github.com/Cray-HPE/csm-ssh-keys"
+  - 'https://github.com/Cray-HPE/csm-ssh-keys'
 version: 0.0.0-chart
