@@ -26,4 +26,4 @@ maintainers:
 name: "csm-ssh-keys"
 sources:
   - "https://github.com/Cray-HPE/csm-ssh-keys"
-version: 0.0.0-chart 
+version: 0.0.0-chart
