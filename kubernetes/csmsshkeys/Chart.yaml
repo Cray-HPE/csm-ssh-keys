@@ -1,5 +1,29 @@
-apiVersion: v1
-description: "CSM Passwordless SSH Keypair Initialization"
-name: "csm-ssh-keys"
-home: "scms/csm-ssh-keys"
-version: @VERSION@
+annotations:
+  artifacthub.io/images: |
+    - name: csm-ssh-keys
+      image: artifactory.algol60.net/csm-docker/stable/csm-ssh-keys:0.0.0-image
+  artifacthub.io/license: MIT
+apiVersion: v2
+appVersion: 0.0.0
+dependencies:
+  - name: cray-service
+    version: ^7.0.0
+    repository: 'https://artifactory.algol60.net/artifactory/csm-helm-charts/'
+description: CSM Passwordless SSH Keypair Initialization
+home: scms/csm-ssh-keys
+keywords:
+  - csm
+  - cfs
+  - ssh
+  - passwordless
+maintainers:
+  - name: jsollom-hpe
+    email: jason.sollom@hpe.com
+  - name: jsl-hpe
+    email: joel.landsteiner@hpe.com
+  - name: rbak-hpe
+    email: ryan.bak@hpe.com
+name: csm-ssh-keys
+sources:
+  - 'https://github.com/Cray-HPE/csm-ssh-keys'
+version: 0.0.0-chart
