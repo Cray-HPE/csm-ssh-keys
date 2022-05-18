@@ -23,7 +23,7 @@
 #
 # Dockerfile for csm-ssh-keys
 
-FROM artifactory.algol60.net/docker.io/alpine:3.13 as service
+FROM artifactory.algol60.net/csm-docker/stable/docker.io/library/alpine:3.15 as service
 WORKDIR /app
 RUN apk add --upgrade --no-cache apk-tools &&  \
 	apk update && \
@@ -35,7 +35,7 @@ COPY /src/ /app/src
 COPY /src/csmsshkeys /app/src/csmsshkeys
 COPY setup.py README.md .version gitInfo.txt /app/
 RUN pip3 install --upgrade pip && \
-    pip3 install --no-cache-dir -r requirements.txt && \
+    pip3 install --no-cache-dir --ignore-installed six -r requirements.txt && \
     pip3 install --no-cache-dir . && \
     rm -rf /app/*
 USER nobody:nobody
