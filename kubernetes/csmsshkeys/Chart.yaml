@@ -24,7 +24,7 @@
 annotations:
   artifacthub.io/images: |
     - name: csm-ssh-keys
-      image: artifactory.algol60.net/csm-docker/stable/csm-ssh-keys:0.0.0-image
+      image: artifactory.algol60.net/csm-docker/S-T-A-B-L-E/csm-ssh-keys:0.0.0-image
   artifacthub.io/license: MIT
 apiVersion: v2
 appVersion: 0.0.0-image
