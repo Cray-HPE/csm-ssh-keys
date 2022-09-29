@@ -34,7 +34,7 @@ cray-service:
     cfs-trust:
       name: "csm-ssh-keys"
       image:
-        repository: artifactory.algol60.net/csm-docker/stable/csm-ssh-keys
+        repository: artifactory.algol60.net/csm-docker/S-T-A-B-L-E/csm-ssh-keys
         # tag defaults to chart appVersion
   service:
     enabled: false
