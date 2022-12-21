@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Update Chart with correct image version strings during builds.
 
+## [1.5.1] - 2022-07-14
+### Added
+- Authenticate to CSM's artifactory
+
 ## [1.5.0] - 2022-07-14
 ### Added
 - Support for SLES SP4
