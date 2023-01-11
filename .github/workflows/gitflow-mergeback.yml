@@ -1,7 +1,7 @@
 #
 # MIT License
 #
-# (C) Copyright 2019-2022 Hewlett Packard Enterprise Development LP
+# (C) Copyright 2022 Hewlett Packard Enterprise Development LP
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -21,23 +21,31 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
-# Dockerfile for csm-ssh-keys
+name: Gitflow Merge Back
+on:
+  pull_request:
+    types: [ closed ]
+    branches: [ master ]
 
-FROM artifactory.algol60.net/csm-docker/stable/docker.io/library/alpine:3.15 as service
-WORKDIR /app
-RUN apk add --upgrade --no-cache apk-tools &&  \
-	apk update && \
-	apk add --no-cache linux-headers gcc g++ python3-dev py3-pip musl-dev libffi-dev openssl-dev git jq curl openssh-client && \
-	apk -U upgrade --no-cache
-ADD constraints.txt requirements.txt /app/
-RUN mkdir /app/src
-COPY /src/ /app/src
-COPY /src/csmsshkeys /app/src/csmsshkeys
-COPY setup.py README.md .version gitInfo.txt /app/
-RUN --mount=type=secret,id=netrc,target=/root/.netrc \
-    pip3 install --upgrade pip && \
-    pip3 install --no-cache-dir --ignore-installed six -r requirements.txt && \
-    pip3 install --no-cache-dir . && \
-    rm -rf /app/*
-USER nobody:nobody
-ENTRYPOINT [ "python3", "-m", "csmsshkeys" ]
+jobs:
+  merge-to-develop:
+    # this job will only run if the PR has been merged, not just closed
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Create the gitflow mergeback PR
+        uses: Cray-HPE/.github/actions/csm-gitflow-mergeback@v1-csm-gitflow-mergeback
+        id: create-pr
+        with:
+          source-branch: master
+          base-branch: develop
+          automerge: true
+          app-key: ${{ secrets.CSM_GITFLOW_MERGEBACK_BOT_APP_KEY }}
+          app-id: ${{ secrets.CSM_GITFLOW_MERGEBACK_BOT_APP_ID }}
+
+      - name: Generated Pull Request Info
+        shell: bash
+        run: |
+          echo "Pull Request Number - ${{ steps.create-pr.outputs.pr-number }}"
+          echo "Pull Request URL - ${{ steps.create-pr.outputs.pr-url }}"

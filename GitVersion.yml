@@ -1,7 +1,7 @@
 #
 # MIT License
 #
-# (C) Copyright 2019-2022 Hewlett Packard Enterprise Development LP
+# (C) Copyright 2021-2022 Hewlett Packard Enterprise Development LP
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -21,23 +21,34 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
-# Dockerfile for csm-ssh-keys
-
-FROM artifactory.algol60.net/csm-docker/stable/docker.io/library/alpine:3.15 as service
-WORKDIR /app
-RUN apk add --upgrade --no-cache apk-tools &&  \
-	apk update && \
-	apk add --no-cache linux-headers gcc g++ python3-dev py3-pip musl-dev libffi-dev openssl-dev git jq curl openssh-client && \
-	apk -U upgrade --no-cache
-ADD constraints.txt requirements.txt /app/
-RUN mkdir /app/src
-COPY /src/ /app/src
-COPY /src/csmsshkeys /app/src/csmsshkeys
-COPY setup.py README.md .version gitInfo.txt /app/
-RUN --mount=type=secret,id=netrc,target=/root/.netrc \
-    pip3 install --upgrade pip && \
-    pip3 install --no-cache-dir --ignore-installed six -r requirements.txt && \
-    pip3 install --no-cache-dir . && \
-    rm -rf /app/*
-USER nobody:nobody
-ENTRYPOINT [ "python3", "-m", "csmsshkeys" ]
+# Gitflow Configuration for this repository
+mode: ContinuousDeployment
+branches:
+  main:
+    regex: ^master$|^main$
+    mode: ContinuousDelivery
+    tag: rc
+  develop:
+    regex: ^develop$
+    increment: Minor
+    mode: ContinuousDeployment
+  release:
+    # Do not consider legacy release/[shasta,csm]-* branches as gitflow release branches
+    regex: ^release\/[\d.]+
+    mode: ContinuousDelivery
+  feature:
+    regex: ^features?[/-]
+    mode: ContinuousDelivery
+  pull-request:
+    regex: ^(pull|pull\-requests|pr)[/-]
+    mode: ContinuousDelivery
+  hotfix:
+    regex: ^hotfix(es)?[/-]
+    tag: hotfix
+    mode: ContinuousDelivery
+  support:
+    regex: ^support[/-]
+    mode: ContinuousDelivery
+ignore:
+  sha: []
+merge-message-formats: {}
