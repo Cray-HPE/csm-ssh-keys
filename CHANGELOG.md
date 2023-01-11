@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Enabled building of unstable artifacts
 - Updated header of update_versions.conf to reflect new tool options
+- Added or adjusted copyright licenses
 ### Fixed
 - Update Chart with correct image version strings during builds.
 - Convert to gitflow/gitversion.
