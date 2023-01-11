@@ -21,32 +21,34 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
-annotations:
-  artifacthub.io/images: |
-    - name: csm-ssh-keys
-      image: artifactory.algol60.net/csm-docker/stable/csm-ssh-keys:0.0.0-image
-  artifacthub.io/license: MIT
-apiVersion: v2
-appVersion: 0.0.0-image
-dependencies:
-  - name: cray-service
-    version: ^7.0.0
-    repository: 'https://artifactory.algol60.net/artifactory/csm-helm-charts/'
-description: CSM Passwordless SSH Keypair Initialization
-home: scms/csm-ssh-keys
-keywords:
-  - csm
-  - cfs
-  - ssh
-  - passwordless
-maintainers:
-  - name: jsollom-hpe
-    email: jason.sollom@hpe.com
-  - name: jsl-hpe
-    email: joel.landsteiner@hpe.com
-  - name: rbak-hpe
-    email: ryan.bak@hpe.com
-name: csm-ssh-keys
-sources:
-  - 'https://github.com/Cray-HPE/csm-ssh-keys'
-version: 0.0.0-chart
+# Gitflow Configuration for this repository
+mode: ContinuousDeployment
+branches:
+  main:
+    regex: ^master$|^main$
+    mode: ContinuousDelivery
+    tag: rc
+  develop:
+    regex: ^develop$
+    increment: Minor
+    mode: ContinuousDeployment
+  release:
+    # Do not consider legacy release/[shasta,csm]-* branches as gitflow release branches
+    regex: ^release\/[\d.]+
+    mode: ContinuousDelivery
+  feature:
+    regex: ^features?[/-]
+    mode: ContinuousDelivery
+  pull-request:
+    regex: ^(pull|pull\-requests|pr)[/-]
+    mode: ContinuousDelivery
+  hotfix:
+    regex: ^hotfix(es)?[/-]
+    tag: hotfix
+    mode: ContinuousDelivery
+  support:
+    regex: ^support[/-]
+    mode: ContinuousDelivery
+ignore:
+  sha: []
+merge-message-formats: {}

@@ -1,7 +1,7 @@
 #
 # MIT License
 #
-# (C) Copyright 2021-2022 Hewlett Packard Enterprise Development LP
+# (C) Copyright 2022 Hewlett Packard Enterprise Development LP
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -21,32 +21,21 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
-annotations:
-  artifacthub.io/images: |
-    - name: csm-ssh-keys
-      image: artifactory.algol60.net/csm-docker/stable/csm-ssh-keys:0.0.0-image
-  artifacthub.io/license: MIT
-apiVersion: v2
-appVersion: 0.0.0-image
-dependencies:
-  - name: cray-service
-    version: ^7.0.0
-    repository: 'https://artifactory.algol60.net/artifactory/csm-helm-charts/'
-description: CSM Passwordless SSH Keypair Initialization
-home: scms/csm-ssh-keys
-keywords:
-  - csm
-  - cfs
-  - ssh
-  - passwordless
-maintainers:
-  - name: jsollom-hpe
-    email: jason.sollom@hpe.com
-  - name: jsl-hpe
-    email: joel.landsteiner@hpe.com
-  - name: rbak-hpe
-    email: ryan.bak@hpe.com
-name: csm-ssh-keys
-sources:
-  - 'https://github.com/Cray-HPE/csm-ssh-keys'
-version: 0.0.0-chart
+# Check a PR for a modified changelog file, assuming CHANGELOG.md is the file.
+# Ignore PRs with the gitflow-maintenance and/or dependabot label(s).
+name: Changelog Checker
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+# Workflow Jobs
+jobs:
+  check-changelog:
+    runs-on: ubuntu-latest
+    if: "!(
+      contains(github.event.pull_request.labels.*.name, 'gitflow-maintenance') ||
+      contains(github.event.pull_request.labels.*.name, 'dependabot')
+    )"
+    steps:
+      - name: Ensure changelog has changes
+        uses: Cray-HPE/.github/actions/csm-changelog-checker@v1-csm-changelog-checker
