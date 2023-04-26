@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Update Chart with correct image version strings during builds.
 
+### Removed
+- Removed defunct files leftover from previous versioning system
+
 ## [1.5.1] - 2022-12-20
 ### Added
 - Add Artifactory authentication to Jenkinsfile
