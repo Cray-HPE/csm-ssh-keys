@@ -6,8 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+
+## [1.5.5] - 2023-07-24
 ### Dependencies
 - Use `update_external_versions` to get latest patch version of `cfs-ssh-trust` Python module.
+- Bumped depndency patch versions
+| Package                  | From    | To       |
+|--------------------------|---------|----------|
+| `cachetools`             | 4.2.1   | 4.2.4    |
+| `oauthlib`               | 3.1.0   | 3.1.1    |
+| `python-dateutil`        | 2.8.1   | 2.8.2    |
+| `requests-oauthlib`      | 1.3.0   | 1.3.1    |
+| `rsa`                    | 4.7     | 4.7.2    |
+| `urllib3`                | 1.26.3  | 1.26.16  |
 
 ## [1.5.4] - 2023-07-18
 ### Dependencies
