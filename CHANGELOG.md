@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.5.6] - 2023-08-14
+### Changed
+- RPM OS type changed to `noos`. (CASMCMS-8691)
+- Update Python module to reflect that Docker Alpine image is using Python 3.9
+- Disabled concurrent Jenkins builds on same branch/commit
+- Added build timeout to avoid hung builds
+
 ## [1.5.5] - 2023-07-24
 ### Dependencies
 - Use `update_external_versions` to get latest patch version of `cfs-ssh-trust` Python module.
