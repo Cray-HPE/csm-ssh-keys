@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Dependencies
+- Bump `tj-actions/changed-files` from 37 to 38 ([#46](https://github.com/Cray-HPE/csm-ssh-keys/pull/46))
+
 ## [1.5.6] - 2023-08-14
 ### Changed
 - RPM OS type changed to `noos`. (CASMCMS-8691)
