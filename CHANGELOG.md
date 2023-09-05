@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Dependencies
 - Bump `tj-actions/changed-files` from 37 to 38 ([#46](https://github.com/Cray-HPE/csm-ssh-keys/pull/46))
+- Bump `actions/checkout` from 3 to 4 ([#47](https://github.com/Cray-HPE/csm-ssh-keys/pull/47))
 
 ## [1.5.6] - 2023-08-14
 ### Changed
