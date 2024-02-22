@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [Unreleased]
+
+## [1.6.0] - 2024-02-22
+### Dependencies
+- Bump `tj-actions/changed-files` from 37 to 42 ([#46](https://github.com/Cray-HPE/csm-ssh-keys/pull/46), [#48](https://github.com/Cray-HPE/csm-ssh-keys/pull/48), [#50](https://github.com/Cray-HPE/csm-ssh-keys/pull/50), [#51](https://github.com/Cray-HPE/csm-ssh-keys/pull/51), [#53](https://github.com/Cray-HPE/csm-ssh-keys/pull/53))
+- Bump `actions/checkout` from 3 to 4 ([#47](https://github.com/Cray-HPE/csm-ssh-keys/pull/47))
+- Bump `stefanzweifel/git-auto-commit-action` from 4 to 5 ([#49](https://github.com/Cray-HPE/csm-ssh-keys/pull/49))
+- Bump `kubernetes` from 12.0.1 to 22.6.0 to match CSM 1.6 Kubernetes version
 
 ## [1.5.6] - 2023-08-14
 ### Changed
