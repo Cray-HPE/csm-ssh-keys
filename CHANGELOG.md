@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.1] - 2024-02-22
+### Dependencies
+- Bump `cfs-trust` from 1.6 to 1.7 for CSM 1.6
+
 ## [1.6.0] - 2024-02-22
 ### Dependencies
 - Bump `tj-actions/changed-files` from 37 to 42 ([#46](https://github.com/Cray-HPE/csm-ssh-keys/pull/46), [#48](https://github.com/Cray-HPE/csm-ssh-keys/pull/48), [#50](https://github.com/Cray-HPE/csm-ssh-keys/pull/50), [#51](https://github.com/Cray-HPE/csm-ssh-keys/pull/51), [#53](https://github.com/Cray-HPE/csm-ssh-keys/pull/53))
