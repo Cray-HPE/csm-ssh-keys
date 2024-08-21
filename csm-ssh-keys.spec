@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Hewlett Packard Enterprise Development LP
+# Copyright 2020-2021, 2024 Hewlett Packard Enterprise Development LP
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -24,7 +24,7 @@ License: MIT
 Summary: Ansible modules and roles for use with CSM SSH Key Distribution
 Group: System/Management
 Version: %(cat .version)
-Release: %(echo ${BUILD_METADATA})
+Release: %(cat .rpm_release)
 BuildArch: noarch
 Source: %{name}-%{version}.tar.bz2
 Vendor: Hewlett Packard Enterprise Development LP
