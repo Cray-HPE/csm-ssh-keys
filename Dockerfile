@@ -1,7 +1,7 @@
 #
 # MIT License
 #
-# (C) Copyright 2019-2022 Hewlett Packard Enterprise Development LP
+# (C) Copyright 2019-2022, 2025 Hewlett Packard Enterprise Development LP
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -23,7 +23,7 @@
 #
 # Dockerfile for csm-ssh-keys
 
-FROM artifactory.algol60.net/csm-docker/stable/docker.io/library/alpine:3.15 as service
+FROM artifactory.algol60.net/csm-docker/stable/docker.io/library/alpine:3.18 as service
 WORKDIR /app
 RUN apk add --upgrade --no-cache apk-tools &&  \
 	apk update && \
