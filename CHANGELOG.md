@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Bump Alpine version from 3.15 to 3.21, because 3.15 no longer receives security patches
   - Use Python venv inside Docker image
   - Use `cfs-ssh-trust` v1.8
+  - Update Python dependency versions for Python 3.12
 
 ## [1.6.3] - 2024-09-05
 ### Dependencies
