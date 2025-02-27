@@ -1,6 +1,6 @@
 cachetools==5.5.1
 certifi==2025.1.31
-cfs-ssh-trust>=1.8,<1.9
+cfs-ssh-trust>=1.9,<1.10
 chardet==5.2.0
 google-auth==2.38.0
 idna==3.10

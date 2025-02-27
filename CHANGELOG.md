@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.1] - 2025-02-27
+### Dependencies
+- CASMCMS-9292/CASMCMS-9293: Use `cfs-ssh-trust` v1.9
+
 ## [1.7.0] - 2025-02-13
 ### Dependencies
 - CASMCMS-9282
