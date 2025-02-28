@@ -41,3 +41,4 @@
     state: present
     path: /root/.ssh/authorized_keys
     mode: '600'
+    regexp: "^{{ csm_public_key['response'] }}$"
