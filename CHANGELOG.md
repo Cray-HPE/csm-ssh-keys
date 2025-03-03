@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Dependencies
+
+- Bump `dangoslen/dependabot-changelog-helper` from 3 to 4 ([#66](https://github.com/Cray-HPE/csm-ssh-keys/pull/66))
+
 ## [1.7.1] - 2025-02-27
 ### Dependencies
 - CASMCMS-9292/CASMCMS-9293: Use `cfs-ssh-trust` v1.9
