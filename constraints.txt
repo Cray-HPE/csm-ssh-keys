@@ -4,8 +4,8 @@ cfs-ssh-trust>=1.9,<1.10
 chardet==5.2.0
 google-auth==2.38.0
 idna==3.10
-# CSM 1.6 moved to Kubernetes 1.24, so use client v24.x to ensure compatability
-kubernetes>=24.2,<24.3
+# CSM 1.7 moved to Kubernetes 1.32, so use client v32.x to ensure compatability
+kubernetes>=32.0,<32.1
 oauthlib==3.2.2
 pyasn1==0.6.1
 pyasn1-modules==0.4.1
