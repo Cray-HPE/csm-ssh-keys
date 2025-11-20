@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Dependencies
-
+- Bump `actions/checkout` from 4 to 6 ([#71](https://github.com/Cray-HPE/csm-ssh-keys/pull/71), [#73](https://github.com/Cray-HPE/csm-ssh-keys/pull/73))
 - Bump `actions/checkout` from 4 to 5 ([#71](https://github.com/Cray-HPE/csm-ssh-keys/pull/71))
 
 ## [1.8.1] - 2025-07-02
